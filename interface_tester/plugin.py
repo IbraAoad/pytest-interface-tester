@@ -328,6 +328,8 @@ class InterfaceTester:
                 with tester_context(ctx):
                     test_fn()
             except Exception as e:
+                logger.warning(f"Found exception: {e}")
+                logger.warning(e.__traceback__)
                 if self._RAISE_IMMEDIATELY:
                     raise e
                 errors.append((ctx, e))
